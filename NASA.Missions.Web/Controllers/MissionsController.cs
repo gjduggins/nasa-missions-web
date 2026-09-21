@@ -22,6 +22,13 @@ namespace NASA.Missions.Web.Controllers
             return View(missions);
         }
 
+        // GET: Missions/Historical
+        public async Task<IActionResult> Historical()
+        {
+            var missions = await _missionService.GetAllMissionsAsync();
+            return View(missions);
+        }
+
         // GET: Missions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
