@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  nasa.missions.web:
+    image: nasa.missions.web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Container
