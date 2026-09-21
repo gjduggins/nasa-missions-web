@@ -1,0 +1,54 @@
+@model IEnumerable<NASA.Missions.Web.Models.Mission>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to NASA Missions</h1>
+    <p>Explore NASA's past, present, and future space exploration missions.</p>
+</div>
+
+<h2>Currently Active Missions</h2>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var mission in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    @if (!string.IsNullOrEmpty(mission.ImageUrl))
+                    {
+                        <img src="@mission.ImageUrl" class="card-img-top" alt="@mission.Name" style="height: 200px; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <div class="card-img-top bg-secondary" style="height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
+                            <span>No Image Available</span>
+                        </div>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@mission.Name</h5>
+                        <p class="card-text">@mission.Description</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Launched: @mission.LaunchDate.ToString("MMMM dd, yyyy")<br>
+                                Status: <span class="badge bg-success">@mission.Status</span><br>
+                                Type: @mission.Type
+                            </small>
+                        </p>
+                        <a href="@Url.Action("Details", "Missions", new { id = mission.Id })" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No active missions found.</p>
+}
+
+<div class="mt-4">
+    <a href="@Url.Action("Index", "Missions")" class="btn btn-secondary">View All Missions</a>
+</div>
