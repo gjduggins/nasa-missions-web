@@ -1,0 +1,7 @@
+This folder will contain mission images.
+
+Example images that could be added:
+- apollo11.jpg
+- perseverance.jpg
+- hubble.jpg
+- voyager1.jpg
