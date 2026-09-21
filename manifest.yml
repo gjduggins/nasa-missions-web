@@ -1,0 +1,15 @@
+---
+applications:
+- name: nasa-missions-web
+  memory: 256M
+  instances: 1
+  buildpacks:
+    - dotnet_core_buildpack
+  env:
+    ASPNETCORE_ENVIRONMENT: Production
+  routes:
+    - route: nasa-missions-web.apps.example.com
+  services:
+    - nasa-missions-db
+  health-check-type: http
+  health-check-http-endpoint: /health
