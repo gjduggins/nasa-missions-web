@@ -27,4 +27,4 @@ dotnet build
 echo "Running tests..."
 dotnet test
 
-echo "Setup complete! You can now run the application with 'dotnet run --project NASA.Missions.Web'"
+echo "Setup complete! You can now run the application with 'dotnet run --project NASA.Missions.Web'
