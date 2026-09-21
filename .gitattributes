@@ -1,0 +1,54 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom for Visual Studio
+*.cs diff=csharp
+*.sln crlf
+*.csproj crlf
+*.vbproj crlf
+*.vcxproj crlf
+*.vcxproj.filters crlf
+*.props crlf
+*.targets crlf
+*.xsd crlf
+*.wsdl crlf
+*.xml crlf
+*.xaml crlf
+*.resx crlf
+*.settings crlf
+
+# Standard to msysgit
+*.docx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Razor views
+*.cshtml text eol=crlf
+
+# JavaScript
+*.js text eol=crlf
+
+# CSS
+*.css text eol=crlf
+
+# HTML
+*.html text eol=crlf
+
+# JSON
+*.json text eol=crlf
+
+# Markdown
+*.md text eol=crlf
+
+# Text files
+*.txt text eol=crlf
+
+# Configuration files
+*.config text eol=crlf
+*.ini text eol=crlf
+*.yaml text eol=crlf
+*.yml text eol=crlf
