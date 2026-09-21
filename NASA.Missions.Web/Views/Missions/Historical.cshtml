@@ -1,0 +1,50 @@
+@model IEnumerable<NASA.Missions.Web.Models.Mission>
+@{
+    ViewData["Title"] = "Historical NASA Missions";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">Historical NASA Missions</h1>
+    <p class="lead">Explore the remarkable achievements in space exploration that have shaped our understanding of the universe.</p>
+</div>
+
+<div class="row">
+    @foreach (var mission in Model.Where(m => !m.IsActive).OrderByDescending(m => m.LaunchDate))
+    {
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                @if (!string.IsNullOrEmpty(mission.ImageUrl))
+                {
+                    <img src="@mission.ImageUrl" class="card-img-top" alt="@mission.Name" style="height: 200px; object-fit: cover;">
+                }
+                else
+                {
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <span class="text-muted">No image available</span>
+                    </div>
+                }
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@mission.Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Launched: @mission.LaunchDate.ToString("MMMM dd, yyyy")</h6>
+                    @if (mission.EndDate.HasValue)
+                    {
+                        <h6 class="card-subtitle mb-2 text-muted">Ended: @mission.EndDate.Value.ToString("MMMM dd, yyyy")</h6>
+                    }
+                    <p class="card-text flex-grow-1">@mission.Description</p>
+                    <div class="mt-auto">
+                        <span class="badge @(mission.Status.ToLower() == "completed" ? "bg-success" : "bg-secondary")">@mission.Status</span>
+                        <span class="badge bg-info">@mission.Type</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.Any(m => !m.IsActive))
+{
+    <div class="alert alert-info">
+        <h4>No historical missions found</h4>
+        <p>Check back later as we continue to add more historical NASA missions to our database.</p>
+    </div>
+}
