@@ -31,6 +31,28 @@ namespace NASA.Missions.Tests.Controllers
         }
 
         [Fact]
+        public async Task Historical_Returns_ViewResult_With_All_Missions()
+        {
+            // Arrange
+            var mockService = new Mock<IMissionService>();
+            mockService.Setup(service => service.GetAllMissionsAsync())
+                .ReturnsAsync(new List<Mission> {
+                    new Mission { Id = 1, Name = "Apollo 11", Description = "First crewed mission to land on the Moon", Status = "Completed", LaunchDate = new DateTime(1969, 7, 16) },
+                    new Mission { Id = 2, Name = "Voyager 1", Description = "Space probe launched to study outer Solar System", Status = "Active", LaunchDate = new DateTime(1977, 9, 5) }
+                });
+
+            var controller = new MissionsController(mockService.Object);
+
+            // Act
+            var result = await controller.Historical();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var missions = Assert.IsAssignableFrom<IEnumerable<Mission>>(viewResult.Model);
+            Assert.Equal(2, missions.Count());
+        }
+
+        [Fact]
         public async Task Details_WithValidId_Returns_ViewResult_With_Mission()
         {
             // Arrange
