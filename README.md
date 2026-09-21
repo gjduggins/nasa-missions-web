@@ -3,11 +3,13 @@
 This is an ASP.NET Core web application for displaying information about NASA missions.
 
 ## Features
-- View current and past NASA missions
-- Detailed mission information
+- View all NASA missions (current and past)
+- Dedicated Historical Missions page with detailed descriptions
+- Detailed mission information with launch dates and achievements
 - Search functionality
 - Admin panel for managing mission data
 - Responsive design using Bootstrap 5
+- Comprehensive unit test coverage
 
 ## Technologies Used
 - ASP.NET Core MVC
@@ -81,7 +83,16 @@ nasa-missions-web/
 
 ## Database
 
-The application uses SQLite for data persistence. Seed data is included for demonstration purposes with missions like Apollo 11, Mars Rover Perseverance, Hubble Space Telescope, and Voyager 1.
+The application uses SQLite for data persistence. Seed data is included for demonstration purposes with historically significant missions:
+
+1. **Apollo 11** - First crewed mission to land on the Moon (1969)
+2. **Voyager 1** - Deep space probe that entered interstellar space (1977-Present)
+3. **Hubble Space Telescope** - Revolutionary space-based observatory (1990-Present)
+4. **Mars Pathfinder** - First successful Mars rover mission (1996-1997)
+5. **Cassini-Huygens** - Saturn exploration mission (1997-2017)
+6. **Mars Rover Perseverance** - Current Mars exploration mission (2020-Present)
+
+Each mission includes detailed descriptions of their achievements and significance.
 
 ## Testing
 
@@ -95,6 +106,7 @@ dotnet test
 The test suite includes:
 - Service layer tests using in-memory database
 - Controller tests using Moq for dependency injection
+- Tests for all controller actions including the new Historical missions page
 
 ## Contributing
 
